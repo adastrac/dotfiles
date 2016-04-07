@@ -1,0 +1,65 @@
+! Tomorrow - Night
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+
+URxvt.depth: 		 32
+URxvt.geometry:		 90x30
+URxvt.loginShell:	 true
+URxvt.saveLines:	 50
+URxvt.internalBorder:	 3
+URxvt.lineSpace:	 1
+
+! Fonts
+URxvt.font: xft:inconsolata:pixelsize=12
+URxvt.boldfont: xft:inconsolata:bold:pixelsize=12
+
+! Fix font space
+URxvt.letterSpace: -2
+
+! Cursor
+URxvt.cursorBlink: true
+URxvt.cursorColor: #c5c8c6
+URxvt.cursorUnderline: true
+
+! Scrollbar
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
+
+URxvt.background: #1d1f21
+URxvt.foreground: #c5c8c6
+
+!Black
+URxvt.color0: #282a2e
+URxvt.color8: #373b41
+
+!Red
+URxvt.color1: #a54242
+URxvt.color9: #cc6666
+
+!Green
+URxvt.color2:  #8c9440
+URxvt.color10: #b4bd68
+
+!Yellow
+URxvt.color3:  #de935f
+URxvt.color11: #f0c674
+
+!Blue
+URxvt.color4:  #5f819d
+URxvt.color12: #81a2be
+
+!Magenta
+URxvt.color5:  #85678f
+URxvt.color13: #b294bb
+
+!Cyan
+URxvt.color6:  #5e8d87
+URxvt.color14: #8abeb7
+
+!White
+URxvt.color7:  #707880
+URxvt.color15: #c4c8c6
