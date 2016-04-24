@@ -8,6 +8,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" set the runtime path to include JSHint2
+set rtp+=~/.vim/bundle/jshint2.vim
+
+
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
@@ -40,7 +44,10 @@ nnoremap <space> za
 " Vundle - Plugin: SimpylFold
 Plugin 'tmhedberg/SimpylFold'
 " Vundle - Plugin: SimpylFold - Display docstrings for folded code
-let g:SimpylFold_docstring_preview=1
+let g:SimpylFold_docstring_preview = 1
+" To load SimpylFold to be proprely loaded in certian cases
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:1num) foldmethod=expr
+autocmd BufWinleave *.py setlocal foldexpr< foldmetod<
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -51,11 +58,19 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+
 " Vundle - Auto-Indentation
 Plugin 'vim-scripts/indentpython.vim'
 
 " Vundle - Flagging Unnecessary Whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Vundle - CtrlP 
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
 
 " Vundle - Syntax Checking/Highlighting
 Plugin 'scrooloose/syntastic'
@@ -87,6 +102,7 @@ set expandtab
 set smarttab
 set tabstop=4
 set shiftwidth=4
+set clipboard=unnamedplus
 
 let mapleader = ","
 set gdefault
