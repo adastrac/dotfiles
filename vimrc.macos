@@ -1,0 +1,129 @@
+" enter the current millenium
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vimairline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'pangloss/vim-javascript'
+Plugin 'godlygeek/tabular'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-markdown'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+" filetype plugin indent on    " required
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+set number
+set relativenumber
+set encoding=utf-8
+set cursorline
+set hlsearch!
+set visualbell
+set autochdir
+set clipboard=unnamed
+" Programming -  Set tags file
+set tags=./tags,tags;$HOME
+
+" Pretty-fying vim
+colorscheme solarized
+set background=dark
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+"let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+"hi IndentGuidesOdd ctermbg=black
+hi IndentGuidesEven ctermbg=black
+
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+let g:airline_solarized_bg='dark'
+
+" Enable code folding and remap za to use <space>
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+" View docstrings for folded code
+let g:SimpylFold_docstring_preview=1
+
+
+" Remap split-screen keys
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <S-C-LEFT> <C-W><
+nnoremap <S-C-RIGHT> <C-W>>
+"nnoremap <A-UP> <C-W>+
+
+" NERDTree - Mappings
+nnoremap <F6> :NERDTreeToggle<CR>
+
+" Syntastic stuff
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" see :h syntastic=loc-list-callback
+function! SyntasticCheckHook(errors)
+	if !empty(a:errors)
+		let g:syntastic_loc_list_height = min([len(a:errors), 10])
+	endif
+endfunction
+
+" Programming - Python - Enable syntax highlighting
+let python_highlight_all=1
+
+" Programming - Python - YouCompleteMe customizations
+let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Programming - Indentation - Python (PEP8 standard)
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 | 
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+" Programming - Indentation - Full Stack Development
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+
+" --------------------------------
+"  Finding Files
+"  Search down subfolders
+"  Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
